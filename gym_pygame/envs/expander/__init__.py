@@ -84,5 +84,5 @@ class Expander(PyGameEnvironment):
 
         return self.get_image()
 
-def ExpanderNoop():
-    return Expander(physics=physics[1], speed=5)
+def ExpanderNoop(speed=5, **kwargs):
+    return Expander(physics=physics[1], speed=5, **kwargs)

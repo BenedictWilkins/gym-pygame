@@ -76,11 +76,6 @@ def PaddlesShared(**kwargs):
     kwargs['player2_policy'] = lambda self, state, action, *args, **kwargs: np.random.choice([action, self.action_space.sample()])
     return Paddles(**kwargs)
 
-def PaddlesAlternative(**kwargs):
-    kwargs['physics'] = physics[2]
-    kwargs['player2_policy'] = lambda self, state, action, *args, **kwargs: np.random.choice([0,1]) #up/down
-    return Paddles(**kwargs)
-
 
 
 

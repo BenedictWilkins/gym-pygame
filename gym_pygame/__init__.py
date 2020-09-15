@@ -22,7 +22,11 @@ from . import envs
 _all__ = ('envs', )
 
 register(id='paddles-v0', entry_point='gym_pygame.envs:Paddles')
+register(id='paddles-v1', entry_point='gym_pygame.envs:PaddlesNoop')
+register(id='paddles-v2', entry_point='gym_pygame.envs:PaddlesShared')
 
 register(id='expander-v0', entry_point='gym_pygame.envs:Expander')
+register(id='expander-v1', entry_point='gym_pygame.envs:ExpanderNoop')
 
 register(id='circular-v0', entry_point='gym_pygame.envs:Circular')
+register(id='circular-v1', entry_point='gym_pygame.envs:CircularNoop')

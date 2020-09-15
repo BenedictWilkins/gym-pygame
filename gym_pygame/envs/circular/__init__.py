@@ -71,3 +71,6 @@ class Circular(PyGameEnvironment):
         self.fill_rect(self.player1.position, self.player1.size)
 
         return self.get_image()
+
+def CircularNoop(**kwargs):
+    return Circular(physics=physics[1], **kwargs)

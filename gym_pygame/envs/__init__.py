@@ -9,8 +9,8 @@ __author__ = "Benedict Wilkins"
 __email__ = "benrjw@gmail.com"
 __status__ = "Development"
 
-from .expander import Expander
-from .circular import Circular
-from .paddles import Paddles
+from .expander import Expander, ExpanderNoop
+from .circular import Circular, CircularNoop
+from .paddles import Paddles, PaddlesNoop, PaddlesShared
 
 __all__ = ('expander', 'circular', 'paddles')
