@@ -28,7 +28,7 @@ class Player:
 
 physics = [
     {"up":np.array([0,-1]), "down":np.array([0,1])},                           # simple
-    {"up":np.array([0,-1]), "down":np.array([0,1]), "no-op":np.array([0,0])},  # simple + no-op
+    {"up":np.array([0,-1]), "down":np.array([0,1]), "noop":np.array([0,0])},  # simple + no-op
     {"up":np.array([0,-1]), "down":np.array([0,1]), "left":np.array([-1,0]), "right":np.array([1,0])}
 ]
 
