@@ -13,7 +13,6 @@ import copy
 import numpy as np
 from ..pygame import PyGameEnvironment 
 
-np.random.seed(0)
 DEFAULT_SIZE = (64,64)
 
 class Car:
@@ -50,16 +49,16 @@ class Motorway(PyGameEnvironment):
         cspeed = 2
         ncars = 10 # (-2)
         inc = size[1]/(ncars-1)
-        self.cars = [Car(0, i*inc, inc*2.5/3, inc*2/3, speed = car_speed[i]) for i in range(ncars-2)]
+        self.cars = [Car(0, i*inc, int(inc*2.5/3), int(inc*2/3), speed = car_speed[i]) for i in range(ncars-2)]
 
         self.__initial_state = copy.deepcopy((self.player, *self.cars))
         print(self.__initial_state)
 
     def collision(self, player, car):
-        return (player.position[0] <= car.position[0] + car.size[0] and 
-               player.position[0] + player.size[0] >= car.position[0] and 
-               player.position[1] <= car.position[1] + car.size[1] and
-               player.position[1] + player.size[1] >= car.position[1])
+        return (player.position[0] < car.position[0] + car.size[0] and 
+               player.position[0] + player.size[0] > car.position[0] and 
+               player.position[1] < car.position[1] + car.size[1] and
+               player.position[1] + player.size[1] > car.position[1])
             
 
 
@@ -70,6 +69,7 @@ class Motorway(PyGameEnvironment):
         
         self.player.position[1] = min(self.player.position[1], self.display_size[1]-self.player.size[1])
         done = self.player.position[1] <= 0
+        reward = int(done)
 
         #update car state
         for car in self.cars:
@@ -77,8 +77,7 @@ class Motorway(PyGameEnvironment):
             car.position[0] -= car.size[0]
 
             done = done or self.collision(self.player, car)
-            if done:
-                print(self.player.position, car.position)
+            reward = -int(done)
 
         # update graphics
         self.clear(self.background_colour) 
