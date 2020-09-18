@@ -30,3 +30,7 @@ register(id='Expander-v1', entry_point='gym_pygame.envs:ExpanderNoop')
 
 register(id='Circular-v0', entry_point='gym_pygame.envs:Circular')
 register(id='Circular-v1', entry_point='gym_pygame.envs:CircularNoop')
+
+
+register(id='Motorway-v0', entry_point='gym_pygame.envs:Motorway')
+register(id='Motorway-v1', entry_point='gym_pygame.envs:MotorwayNoop')

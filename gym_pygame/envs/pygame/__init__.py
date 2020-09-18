@@ -11,7 +11,9 @@ __status__ = "Development"
 
 import os
 os.putenv('SDL_VIDEODRIVER', 'fbcon')
+os.putenv('SDL_AUDIODRIVER', 'alsa')
 os.environ["SDL_VIDEODRIVER"] = 'dummy'
+os.environ['SDL_AUDIODRIVER'] = 'dummy'
 
 import numbers
 

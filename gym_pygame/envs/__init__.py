@@ -12,5 +12,6 @@ __status__ = "Development"
 from .expander import Expander, ExpanderNoop
 from .circular import Circular, CircularNoop
 from .paddles import Paddles, PaddlesNoop, PaddlesShared
+from .motorway import Motorway, MotorwayNoop
 
-__all__ = ('expander', 'circular', 'paddles')
+__all__ = ('expander', 'circular', 'paddles', 'motorway')
