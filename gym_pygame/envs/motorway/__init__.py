@@ -52,7 +52,7 @@ class Motorway(PyGameEnvironment):
         self.cars = [Car(0, i*inc, int(inc*2.5/3), int(inc*2/3), speed = car_speed[i]) for i in range(ncars-2)]
 
         self.__initial_state = copy.deepcopy((self.player, *self.cars))
-        print(self.__initial_state)
+        #print(self.__initial_state)
 
     def collision(self, player, car):
         return (player.position[0] < car.position[0] + car.size[0] and 

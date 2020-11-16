@@ -80,7 +80,7 @@ class PyGameEnvironment(gym.Env, metaclass = StepMeta):
 
         self.display_size = display_size # W, H
 
-    def action_meanings(self):
+    def get_action_meanings(self):
         return self.actions
      
     def get_image_raw(self):

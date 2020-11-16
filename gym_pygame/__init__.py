@@ -31,6 +31,14 @@ register(id='Expander-v1', entry_point='gym_pygame.envs:ExpanderNoop')
 register(id='Circular-v0', entry_point='gym_pygame.envs:Circular')
 register(id='Circular-v1', entry_point='gym_pygame.envs:CircularNoop')
 
-
 register(id='Motorway-v0', entry_point='gym_pygame.envs:Motorway')
 register(id='Motorway-v1', entry_point='gym_pygame.envs:MotorwayNoop')
+
+register(id='Windy-v0', entry_point='gym_pygame.envs:Windy')
+register(id='windy-v1', entry_point='gym_pygame.envs:WindyNoop')
+
+register(id='Balls-v0', entry_point='gym_pygame.envs:BallsS')
+register(id='Balls-v1', entry_point='gym_pygame.envs:BallsI')
+register(id='Balls-v2', entry_point='gym_pygame.envs:BallsC')
+register(id='Balls-v3', entry_point='gym_pygame.envs:BallsW')
+register(id='Balls-v4', entry_point='gym_pygame.envs:BallsO')
