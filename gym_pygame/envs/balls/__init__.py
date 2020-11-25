@@ -28,6 +28,14 @@ class Ball:
     def update(self, env):
         pass
 
+    def draw(self, env):
+        env.fill_circle(self.position, self.radius)
+
+class Player(Ball):
+
+    def draw(self, env):
+        env.fill_rect(self.position - self.radius, (self.radius*2, self.radius*2))
+ 
 physics = [
     {"up":np.array([0,-1]), "down":np.array([0,1]), "noop":np.array([0,0])},  # simple + no-op
     {"up":np.array([0,-1]), "down":np.array([0,1]), "left":np.array([-1,0]), "right":np.array([1,0]), "noop":np.array([0,0])},  # simple + no-op
@@ -40,7 +48,6 @@ class Balls(PyGameEnvironment):
         self.physics = physics
         self.balls = balls  
         self.__initial_state = copy.deepcopy(self.balls)
-
         self.display_size = np.array(self.display_size)
     
     def step(self, action):
@@ -53,7 +60,7 @@ class Balls(PyGameEnvironment):
     def draw(self):
         self.clear(self.background_colour) # clear graphics buffer
         for ball in self.balls:
-            self.fill_circle(ball.position, ball.radius)
+            ball.draw(self)
 
     def update(self, action):
         self.balls[0].position += self.balls[0].speed * self.physics[self.actions[action]]
@@ -92,7 +99,7 @@ def BallsI(**kwargs):
     kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
     s = kwargs['size'][1]
     r = s / 10
-    balls = [Ball(s/6,s/2 - r/2, r),
+    balls = [Player(s/6,s/2 - r/2, r),
              BallVertical(s*5/6,s/2 - r/2, r)]
 
     return Balls(balls, **kwargs)  
@@ -116,14 +123,14 @@ def BallsC(**kwargs):
     kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
     s = kwargs['size'][1]
     r = s / 10
-    balls = [Ball(s/6,s/2 - r/2, r),
+    balls = [Player(s/6,s/2 - r/2, r),
              BallFollow(s*5/6,s/2 - r/2, r)]
 
     return Balls(balls, **kwargs)
 
 def BallsW(**kwargs):
 
-    class BallWind(Ball):
+    class BallWind(Player):
         
         def update(self, env):
             self.position += np.array([-self.speed/2, 0])
@@ -169,7 +176,7 @@ def BallsO(**kwargs):
     kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
     s = kwargs['size'][1]
     r = s / 10
-    balls = [Ball(s/2, s/2, r)]
+    balls = [Player(s/2, s/2, r)]
 
     return BlizzardBalls(balls, **kwargs)
 
@@ -179,7 +186,7 @@ def BallsS(**kwargs):
     kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
     s = kwargs['size'][1]
     r = s / 10
-    balls = [Ball(s/2, s/2, r)]
+    balls = [Player(s/2, s/2, r)]
 
     return Balls(balls, **kwargs)
 
