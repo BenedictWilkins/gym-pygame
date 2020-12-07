@@ -114,6 +114,13 @@ class PyGameEnvironment(gym.Env, metaclass = StepMeta):
     def fill_rect(self, position, size, colour=(255,255,255)):
         pygame.gfxdraw.box(self.display, (*position, *size), colour)
 
+    def draw_poly(self, poly, colour=(255,255,255)):
+        pygame.gfxdraw.aapolygon(self.display, poly, colour)
+
+    def fill_poly(self, poly, colour=(255,255,255)):
+        pygame.gfxdraw.filled_polygon(self.display, poly, colour)
+        pygame.gfxdraw.aapolygon(self.display, poly, colour)
+
     def step(self, action, **kwargs):
         raise NotImplementedError()
 

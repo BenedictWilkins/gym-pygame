@@ -14,6 +14,6 @@ from .circular import Circular, CircularNoop
 from .paddles import Paddles, PaddlesNoop, PaddlesShared
 from .motorway import Motorway, MotorwayNoop
 from .windy import Windy, WindyNoop
-from .balls import BallsI, BallsC, BallsW, BallsS, BallsO
+from .objects import ObjectsI, ObjectsC #, BallsW, BallsS, BallsO
 
-__all__ = ('expander', 'circular', 'paddles', 'motorway', 'windy', 'balls')
+__all__ = ('expander', 'circular', 'paddles', 'motorway', 'windy', 'objects')
