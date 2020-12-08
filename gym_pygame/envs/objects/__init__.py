@@ -93,6 +93,17 @@ class Objects(PyGameEnvironment):
         self.draw()
         return self.get_image()
 
+
+def ObjectsS(**kwargs):
+
+    kwargs['physics'] = physics[1]
+    kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
+    s = kwargs['size'][1]
+    r = s / 10
+    objs = [Player(s/2, s/2, r)]
+    return Objects(objs, **kwargs)
+
+
 def ObjectsI(**kwargs):
     """ Two objects, each is independant of the other. One is control via action, the other moves up/down 
     until it hits the side then reverses direction.
@@ -213,17 +224,6 @@ def BallsO(**kwargs):
     balls = [Player(s/2, s/2, r)]
 
     return BlizzardBalls(balls, **kwargs)
-
-def BallsS(**kwargs):
-
-    kwargs['physics'] = physics[1]
-    kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
-    s = kwargs['size'][1]
-    r = s / 10
-    balls = [Player(s/2, s/2, r)]
-
-    return Balls(balls, **kwargs)
-
 
 """
 

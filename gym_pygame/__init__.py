@@ -37,7 +37,7 @@ register(id='Motorway-v1', entry_point='gym_pygame.envs:MotorwayNoop')
 register(id='Windy-v0', entry_point='gym_pygame.envs:Windy')
 register(id='windy-v1', entry_point='gym_pygame.envs:WindyNoop')
 
-#register(id='Balls-v0', entry_point='gym_pygame.envs:BallsS')
+register(id='Objects-v0', entry_point='gym_pygame.envs:ObjectsS')
 register(id='Objects-v1', entry_point='gym_pygame.envs:ObjectsI')
 register(id='Objects-v2', entry_point='gym_pygame.envs:ObjectsC')
 #register(id='Balls-v3', entry_point='gym_pygame.envs:BallsW')
