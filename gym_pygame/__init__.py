@@ -18,8 +18,9 @@ os.environ["SDL_VIDEODRIVER"] = 'dummy'
 from gym.envs.registration import register
 
 from . import envs
+from .envs.pygame import PyGameEnvironment
 
-_all__ = ('envs', )
+_all__ = ('envs',)
 
 register(id='Paddles-v0', entry_point='gym_pygame.envs:Paddles')
 register(id='Paddles-v1', entry_point='gym_pygame.envs:PaddlesNoop')
@@ -36,9 +37,3 @@ register(id='Motorway-v1', entry_point='gym_pygame.envs:MotorwayNoop')
 
 register(id='Windy-v0', entry_point='gym_pygame.envs:Windy')
 register(id='windy-v1', entry_point='gym_pygame.envs:WindyNoop')
-
-register(id='Objects-v0', entry_point='gym_pygame.envs:ObjectsS')
-register(id='Objects-v1', entry_point='gym_pygame.envs:ObjectsI')
-register(id='Objects-v2', entry_point='gym_pygame.envs:ObjectsC')
-#register(id='Balls-v3', entry_point='gym_pygame.envs:BallsW')
-#register(id='Balls-v4', entry_point='gym_pygame.envs:BallsO')
