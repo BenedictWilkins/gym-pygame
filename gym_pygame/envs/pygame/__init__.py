@@ -10,9 +10,14 @@ __email__ = "benrjw@gmail.com"
 __status__ = "Development"
 
 import os
+
 os.putenv('SDL_VIDEODRIVER', 'fbcon')
 os.putenv('SDL_AUDIODRIVER', 'alsa')
-os.environ["SDL_VIDEODRIVER"] = 'dummy'
+
+# OLD_VDRIVER = os.environ['SDL_VIDEODRIVER']
+# OLD_ADRIVER = os.environ['SDL_AUDIODRIVER'] # errors out for some reason...
+
+os.environ['SDL_VIDEODRIVER'] = 'dummy'
 os.environ['SDL_AUDIODRIVER'] = 'dummy'
 
 import numbers
@@ -126,12 +131,32 @@ class PyGameEnvironment(gym.Env, metaclass = StepMeta):
 
     def reset(self, **kwargs):
         raise NotImplementedError()
-   
-    def render(self, **kwargs):
-        os.environ["SDL_VIDEODRIVER"] = OLD_VDRIVER
 
     def quit(self):
         pygame.quit()
+
+
+class KeyboardPolicy:
+
+    def __init__(self, action_space):
+        # if this policy is created assume that we want to render the game...
+        assert os.environ["SDL_VIDEODRIVER"] != "dummy" 
+        self.action_map = [None] * action_space.n
+
+    def wait(self, sleep=0):
+        pygame.time.wait(sleep)
+
+    def quit(self):
+        pygame.quit()
+
+    def __call__(self):
+        while True: 
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    self.quit()
+                    return
+                elif event.type == pygame.KEYDOWN and event.key in self.action_map:
+                    return self.action_map.index(event.key)
 
 class TestGame(PyGameEnvironment):
    

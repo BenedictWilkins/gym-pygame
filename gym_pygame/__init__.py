@@ -12,8 +12,13 @@ __status__ = "Development"
 import os
 
 os.environ['PYGAME_HIDE_SUPPORT_PROMPT'] = '1'
+#OLD_VDRIVER = os.environ['SDL_VIDEODRIVER']
 os.putenv('SDL_VIDEODRIVER', 'fbcon')
 os.environ["SDL_VIDEODRIVER"] = 'dummy'
+
+def render(*args, **kwargs):
+    """ Render an environment using a pygame window, must be called before any environment is created. """
+    os.environ['SDL_VIDEODRIVER'] = ""
 
 from gym.envs.registration import register
 
