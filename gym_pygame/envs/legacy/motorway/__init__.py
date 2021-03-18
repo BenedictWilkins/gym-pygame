@@ -60,9 +60,6 @@ class Motorway(PyGameEnvironment):
                player.position[1] < car.position[1] + car.size[1] and
                player.position[1] + player.size[1] > car.position[1])
             
-
-
-
     def step(self, action):
         #update player state
         self.player.position = self.player.position + self.player.speed * self.physics[self.actions[action]]

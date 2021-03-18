@@ -135,11 +135,12 @@ class PyGameEnvironment(gym.Env, metaclass = StepMeta):
     def quit(self):
         pygame.quit()
 
-
+# TODO move this ...
 class KeyboardPolicy:
 
     def __init__(self, action_space):
         # if this policy is created assume that we want to render the game...
+        print(os.environ["SDL_VIDEODRIVER"])
         assert os.environ["SDL_VIDEODRIVER"] != "dummy" 
         self.action_map = [None] * action_space.n
 
@@ -157,32 +158,6 @@ class KeyboardPolicy:
                     return
                 elif event.type == pygame.KEYDOWN and event.key in self.action_map:
                     return self.action_map.index(event.key)
-
-class TestGame(PyGameEnvironment):
-   
-   def __init__(self, actions, **kwargs):
-      super(TestGame, self).__init__(actions, **kwargs)
-      
-   def step(self, action):
-      image = self.get_image()
-      return image, 0.0, False, None
-      
-   def reset(self):
-      return self.get_image()
-
-if __name__ == "__main__":
-    env = TestGame(['attack'], display_size=(4,5), background_colour=(255,255,255), format="CHW", dtype=np.uint8)
-    print(env.observation_space.shape, env.observation_space.dtype)
-    
-    env.reset()
-    #env.uses_metaclass()
-    env.display.fill(env.background_colour)
-    state, *_ = env.step(None)
-    print(state.shape, state.dtype)
-    print(state)
-
-    state, *_ = env.step(None)
-    #print(state)
 
 
 

@@ -27,18 +27,21 @@ from .envs.pygame import PyGameEnvironment
 
 _all__ = ('envs',)
 
-register(id='Paddles-v0', entry_point='gym_pygame.envs:Paddles')
-register(id='Paddles-v1', entry_point='gym_pygame.envs:PaddlesNoop')
-register(id='Paddles-v2', entry_point='gym_pygame.envs:PaddlesShared')
+register(id="Roam-v0", entry_point='gym_pygame.envs.roam:make_v0')
+register(id="Roam-v1", entry_point='gym_pygame.envs.roam:make_v1')
 
-register(id='Expander-v0', entry_point='gym_pygame.envs:Expander')
-register(id='Expander-v1', entry_point='gym_pygame.envs:ExpanderNoop')
+#register(id='Paddles-v0', entry_point='gym_pygame.envs:Paddles')
+#register(id='Paddles-v1', entry_point='gym_pygame.envs:PaddlesNoop')
+#register(id='Paddles-v2', entry_point='gym_pygame.envs:PaddlesShared')
 
-register(id='Circular-v0', entry_point='gym_pygame.envs:Circular')
-register(id='Circular-v1', entry_point='gym_pygame.envs:CircularNoop')
+#register(id='Expander-v0', entry_point='gym_pygame.envs:Expander')
+#register(id='Expander-v1', entry_point='gym_pygame.envs:ExpanderNoop')
 
-register(id='Motorway-v0', entry_point='gym_pygame.envs:Motorway')
-register(id='Motorway-v1', entry_point='gym_pygame.envs:MotorwayNoop')
+#register(id='Circular-v0', entry_point='gym_pygame.envs:Circular')
+#register(id='Circular-v1', entry_point='gym_pygame.envs:CircularNoop')
 
-register(id='Windy-v0', entry_point='gym_pygame.envs:Windy')
-register(id='windy-v1', entry_point='gym_pygame.envs:WindyNoop')
+#register(id='Motorway-v0', entry_point='gym_pygame.envs:Motorway')
+#register(id='Motorway-v1', entry_point='gym_pygame.envs:MotorwayNoop')
+
+#register(id='Windy-v0', entry_point='gym_pygame.envs:Windy')
+#register(id='windy-v1', entry_point='gym_pygame.envs:WindyNoop')
