@@ -110,8 +110,7 @@ class Rect(Object):
     def draw(self, env):
         env.fill_rect(self.position - self.size/2, self.size)
 
-def make_v0():
-    kwargs = {}
+def make_v0(**kwargs):
     kwargs['physics'] = physics[0]
     kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
     s = kwargs['size'][1]
@@ -119,7 +118,16 @@ def make_v0():
     objs = [Rect(s/2, s/2, r, r)]
     return Roam(objs, **kwargs)
 
-def make_v1():
+def make_noop_v0(**kwargs):
+    kwargs = {}
+    kwargs['physics'] = physics[1]
+    kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)
+    s = kwargs['size'][1]
+    r = s / 5
+    objs = [Rect(s/2, s/2, r, r)]
+    return Roam(objs, **kwargs)
+
+def make_v1(**kwargs):
     kwargs = {}
     kwargs['physics'] = physics[0]
     kwargs['size'] = kwargs.get('size', DEFAULT_SIZE)

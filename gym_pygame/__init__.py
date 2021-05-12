@@ -22,12 +22,15 @@ def render(*args, **kwargs):
 
 from gym.envs.registration import register
 
+from . import base
+from . import visualise
 from . import envs
 from .envs.pygame import PyGameEnvironment
 
-_all__ = ('envs',)
+_all__ = ('envs', 'visualise')
 
 register(id="Roam-v0", entry_point='gym_pygame.envs.roam:make_v0')
+register(id="Roam-noop-v0", entry_point='gym_pygame.envs.roam:make_noop_v0')
 register(id="Roam-v1", entry_point='gym_pygame.envs.roam:make_v1')
 
 #register(id='Paddles-v0', entry_point='gym_pygame.envs:Paddles')
