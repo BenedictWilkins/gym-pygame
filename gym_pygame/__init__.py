@@ -22,11 +22,27 @@ def render(*args, **kwargs):
 
 from gym.envs.registration import register
 
-from . import base
-from . import visualise
-from . import envs
-from .envs.pygame import PyGameEnvironment
+from .core import PyGameEnvironment
 
+register(id="Alone-v0", entry_point="gym_pygame.envs.alone:make_v0")
+register(id="Alone-v1", entry_point="gym_pygame.envs.alone:make_v1")
+
+register(id="Circular-v0", entry_point="gym_pygame.envs.circular:make_v0")
+register(id="Circular-v1", entry_point="gym_pygame.envs.circular:make_v1")
+register(id="Circular-v2", entry_point="gym_pygame.envs.circular:make_v2")
+register(id="Circular-v3", entry_point="gym_pygame.envs.circular:make_v3")
+
+# expander versions
+register(id="Circular-v4", entry_point="gym_pygame.envs.circular:make_v4")
+register(id="Circular-v5", entry_point="gym_pygame.envs.circular:make_v5")
+
+register(id="Duo-v0", entry_point="gym_pygame.envs.duo:make_v0")
+register(id="Duo-v1", entry_point="gym_pygame.envs.duo:make_v1")
+
+register(id="Windy-v0", entry_point="gym_pygame.envs.windy:make_v0")
+register(id="Windy-v1", entry_point="gym_pygame.envs.windy:make_v1")
+
+"""
 _all__ = ('envs', 'visualise')
 
 register(id="Roam-v0", entry_point='gym_pygame.envs.roam:make_v0')
@@ -48,3 +64,4 @@ register(id="Roam-v1", entry_point='gym_pygame.envs.roam:make_v1')
 
 #register(id='Windy-v0', entry_point='gym_pygame.envs:Windy')
 #register(id='windy-v1', entry_point='gym_pygame.envs:WindyNoop')
+"""
